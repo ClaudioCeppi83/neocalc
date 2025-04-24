@@ -1,32 +1,44 @@
-import { safeEvaluate } from './calculator.js';
+import { safeCalculate } from './calculator.js';
 
-export function setupTerminal() {
-  const input = document.getElementById('terminalInput');
-  const output = document.getElementById('terminalOutput');
+function terminalFunctions() {
+  /**
+   * Handles terminal input, processing commands and displaying output.
+   */
+  export function handleTerminalInput() {
+    const input = document.getElementById('terminalInput');
+    const output = document.getElementById('terminalOutput');
 
-  input.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-      const cmd = input.value.trim();
-      input.value = '';
-
-      output.innerHTML += `\n> ${cmd}`;
-
-      if (cmd.startsWith('calc ')) {
-        try {
-          const result = safeEvaluate(cmd.slice(5));
-          output.innerHTML += `\n= ${result}`;
-        } catch (err) {
-          output.innerHTML += `\n! Error: ${err.message}`;
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') {
+        const command = input.value;
+        input.value = '';
+        
+        output.innerHTML += `<div>> ${command}</div>`;
+        
+        // Process command
+        if (command.startsWith('calc ')) {
+            try {
+                const expr = command.substring(5);
+                const result = safeCalculate(expr);
+                output.innerHTML += `<div>= ${result}</div>`;
+            } catch (error) {
+                output.innerHTML += `<div>! Error: ${error.message}</div>`;
+            }
+        } else if (command === 'clear') {
+            output.innerHTML = '';            
+        } else if (command === 'help') {
+            output.innerHTML += `<div>Available commands:</div>`;
+            output.innerHTML += `<div>- calc [expression]: Evaluate math expression</div>`;
+            output.innerHTML += `<div>- clear: Clear terminal</div>`;
+            output.innerHTML += `<div>- help: Show this help</div>`;
+        } else {
+            output.innerHTML += `<div>! Unknown command. Type 'help' for available commands.</div>`;
         }
-      } else if (cmd === 'clear') {
-        output.innerHTML = '';
-      } else if (cmd === 'help') {
-        output.innerHTML += `\nCommands:\n- calc [expr]\n- clear\n- help`;
-      } else {
-        output.innerHTML += `\n! Unknown command.`;
-      }
 
-      output.scrollTop = output.scrollHeight;
-    }
-  });
+        output.scrollTop = output.scrollHeight;
+      }
+    });
+  }
 }
+
+export { handleTerminalInput, terminalFunctions };
