@@ -1,0 +1,104 @@
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: #0D0208;
+    color: #00FF41;
+    overflow-x: hidden;
+  }
+  
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .matrix-char {
+    color: #008F11;
+    animation: fall linear infinite;
+    position: absolute;
+  }
+  
+  @keyframes fall {
+    to { transform: translateY(100vh); }
+  }
+  
+  .btn-matrix {
+    border: 1px solid #003B00;
+    transition: all 0.3s;
+  }
+  
+  .btn-matrix:hover {
+    box-shadow: 0 0 8px #00FF41;
+    border-color: #00FF41;
+    transform: translateY(-2px);
+  }
+  
+  .btn-active {
+    background-color: #008F11;
+    color: #0D0208;
+    font-weight: bold;
+  }
+  
+  .display {
+    background-color: rgba(13, 2, 8, 0.7);
+    border: 1px solid #00FF41;
+    text-shadow: 0 0 5px #00FF41;
+  }
+  
+  .category-panel {
+    border-right: 1px solid #003B00;
+  }
+  
+  .tab-content {
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .glow {
+    text-shadow: 0 0 5px #00FF41;
+  }
+  
+  .hidden-category {
+    display: none;
+  }
+  
+  .visible-category {
+    display: grid;
+  }
+  
+  .neo-mode {
+    background-color: #003B00;
+    border-color: #3E92CC;
+  }
+  
+  .signature {
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 16px;
+    position: fixed;
+    left: 8px;
+    bottom: 8px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 4px 8px;
+  }
+  
+  .inline-logo {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 3px;
+    filter: brightness(0) invert(1);
+  }
+  

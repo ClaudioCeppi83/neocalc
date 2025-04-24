@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoCalc - Matrix-Inspired Calculator</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <!-- Background Matrix Rain Effect -->
+<figure id="matrixRain" class="matrix-rain" aria-hidden="true"></figure>
+
+  <!-- Calculator App Container -->
+  <main class="w-full max-w-4xl bg-black bg-opacity-90 rounded-lg shadow-xl overflow-hidden border border-green-900" role="main">
+
+    <!-- App Header -->
+    <header class="bg-black p-4 border-b border-green-900 flex justify-between items-center" role="banner">
+      <h1 class="text-2xl font-bold glow" aria-label="NeoCalc">NeoCalc</h1>
+      <nav class="flex space-x-2" aria-label="Mode Switch">
+        <button id="neoModeBtn" class="px-3 py-1 btn-matrix rounded text-xs" type="button">NEO MODE</button>
+        <button id="lightModeBtn" class="px-3 py-1 btn-matrix rounded text-xs" type="button">LIGHT MODE</button>
+      </nav>
+    </header>
+
+	<!-- Calculator Layout -->
+	<div class="flex flex-col md:flex-row" role="group" aria-label="Calculator Interface">
+
+      <!-- Sidebar: Operation Categories -->
+      <aside class="category-panel w-full md:w-1/4 p-4 bg-black bg-opacity-80" role="complementary">
+        <nav id="categoryButtons" class="space-y-2" aria-label="Calculator Categories">
+          <!-- Botones dinámicos aquí -->
+        </nav>
+
+        <!-- History Panel -->
+        <section class="mt-8 border-t border-green-900 pt-4" aria-labelledby="history-label">
+          <h2 id="history-label" class="text-xs text-green-600 mb-2">History</h2>
+          <ul id="history" class="text-xs space-y-1 max-h-40 overflow-y-auto list-none" aria-live="polite"></ul>
+        </section>
+      </aside>
+
+      <!-- Main Display and Panels -->
+      <section class="w-full md:w-3/4 p-4" aria-labelledby="calculator-label">
+        <h2 id="calculator-label" class="sr-only">Calculator Display and Controls</h2>
+
+		<!-- Calculator Display -->
+		<output id="display" class="display p-4 mb-4 rounded-lg text-right text-2xl font-mono min-h-16 glow" role="status" aria-live="polite">0</output>
+
+		<!-- Calculator Panels (dynamic) -->
+		<section id="calculatorPanels" role="region" aria-label="Operation Buttons"></section>
+      </section>
+    </div>
+
+    <!-- Terminal Interface -->
+    <section class="border-t border-green-900 p-4 bg-black bg-opacity-80" aria-labelledby="terminal-label">
+      <h2 id="terminal-label" class="sr-only">NeoCalc Terminal</h2>
+      <form class="flex items-center mb-2" onsubmit="return false;">
+        <label for="terminalInput" class="text-green-500 mr-2">neo@neocalc:~$</label>
+        <input type="text" id="terminalInput" name="terminalInput" class="bg-transparent border-b border-green-700 flex-grow outline-none text-green-300"
+               placeholder="Enter advanced commands..." autocomplete="off" aria-label="Terminal Input" />
+      </form>
+      <output id="terminalOutput" class="text-xs text-green-400 h-20 overflow-y-auto block" aria-live="polite"></output>
+    </section>
+  </main>
+
+  <!-- Signature Footer -->
+  <footer class="signature" role="contentinfo">
+    Made with
+    <img src="assets/logo.svg" alt="DeepSite Logo" class="inline-logo" />
+    <a href="https://enzostvs-deepsite.hf.space" target="_blank" rel="noopener">DeepSite</a> - 🧬
+    <a href="https://enzostvs-deepsite.hf.space?remix=erceppi/neocalc" target="_blank" rel="noopener">Remix</a>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>
