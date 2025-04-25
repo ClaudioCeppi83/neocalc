@@ -1,19 +1,10 @@
-import { currentDisplay, updateDisplay } from './display.js';
-import { addToHistory } from './history.js';
+import { updateHistory } from './history.js';
+import { updateDisplay } from './main.js';
+import { appendToDisplay, clearDisplay } from './calculator.js';
 
-export function setupCrypto() {
-  window.modularArithmetic = modularArithmetic;
-  window.findDivisors = findDivisors;
-  window.primeFactorization = primeFactorization;
-  window.generatePrng = generatePrng;
-  window.romanConverter = () => {};
-  window.fromRomanConverter = () => {};
-  window.xorOperation = () => {};
-  window.andOperation = () => {};
-  window.orOperation = () => {};
-}
+let currentDisplay = '0';
 
-function modularArithmetic() {
+export function modularArithmetic() {
   const mod = prompt("Enter modulus:");
   if (mod) {
     const num = parseFloat(currentDisplay);
@@ -23,8 +14,8 @@ function modularArithmetic() {
     updateDisplay();
   }
 }
-
-function findDivisors() {
+export function findDivisors() {
+  
   const num = parseInt(currentDisplay);
   if (isNaN(num) || num <= 0) {
     currentDisplay = "Invalid input";
@@ -42,8 +33,8 @@ function findDivisors() {
   currentDisplay = divisors.join(', ');
   updateDisplay();
 }
-
-function primeFactorization() {
+export function primeFactorization() {
+ 
   let num = parseInt(currentDisplay);
   if (isNaN(num) || num <= 1) {
     currentDisplay = "Invalid input";
@@ -68,8 +59,8 @@ function primeFactorization() {
   currentDisplay = factors.join(' × ');
   updateDisplay();
 }
-
-function generatePrng() {
+export function generatePrng() {
+  
   const seed = prompt("Enter seed (leave empty for random):");
   let randomNum;
 

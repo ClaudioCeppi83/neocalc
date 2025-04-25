@@ -1,8 +1,7 @@
-export function setupOptimization() {
-    window.solveForX = () => {};
-    window.linearProgramming = () => {};
-    window.gameTheory = () => {};
-    window.findRoots = () => {};
-    window.gradientDescent = () => {};
-    window.simplexMethod = () => {};
-  }
+export function optimizeFunction() {
+    // Implement the function
+}
+
+export function findExtrema() {
+    // Implement the function
+}

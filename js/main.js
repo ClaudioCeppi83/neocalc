@@ -1,48 +1,48 @@
 import { createMatrixRain } from './matrix.js';
-import { updateDisplay,clearDisplay } from './dom.js';
-import { updateHistory } from './history.js';
-import { toggleNeoMode, toggleLightMode } from './dom.js';
-import { updateCategory } from './dom.js';
-import { terminalInputHandler } from './terminal.js';
-import { calculate, appendToDisplay, backspace } from './calculator.js';
+import {
+  updateDisplay,
+  currentDisplay
+} from './calculator.js';
+import { updateHistory, historyFunctions } from './history.js';
+import { handleTerminalInput } from './terminal.js';
+import { addEventListeners, updateCategory } from './dom.js';
+import { utilsFunctions } from './utils.js';
+import { createMatrixRain, matrixFunctions } from './matrix.js';
+import { generatePrng } from './crypto.js';
+import { findDivisors, primeFactorization } from './computational.js';
+import { optimizeFunction, findExtrema } from './optimization.js';
+import { calculateMean, calculateMedian, calculateStandardDeviation } from './statistics.js';
 
-
-
-(function() {
-
-  const DISPLAY_ID = 'display-text';
-
-  window.onload = () => {
+// Initialize
+window.onload = function () {
     createMatrixRain();
-    updateDisplay(DISPLAY_ID, '0');
+    updateDisplay();
     updateCategory('basic');
-  };
+    addEventListeners();
+    handleTerminalInput();
+    historyFunctions();
+    utilsFunctions();
+};
 
-  // Event listeners for basic operations
-  document.querySelectorAll('.number-btn, .operator-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      appendToDisplay(button.textContent);
-    });
-  });
+// Constants
+export let currentDisplay = '0';
+const DISPLAY_ID = 'display-text';
 
-  document.getElementById('equal-btn').addEventListener('click', calculate);
-  document.getElementById('clear-btn').addEventListener('click', clearDisplay);
-  document.getElementById('backspace-btn').addEventListener('click', backspace);
+/**
+ * Updates the content of the display with the current value of currentDisplay.
+ */
+export function updateDisplay() {
+    const display = document.getElementById(DISPLAY_ID);
+    display.textContent = currentDisplay;
+}
 
-  // Event listeners for category switching
-  document.querySelectorAll('.category-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const category = this.getAttribute('data-category');
-      updateCategory(category);
-    });
-  });
-
-  // Event listeners for modes
-  document.getElementById('neoModeBtn').addEventListener('click', toggleNeoMode);
-  document.getElementById('lightModeBtn').addEventListener('click', toggleLightMode);
-
-  // Event listener for terminal
-  document.getElementById('terminalInput').addEventListener('keypress', terminalInputHandler);
-
-
-})();
+// Call the functions
+matrixFunctions();
+findDivisors();
+primeFactorization();
+optimizeFunction();
+findExtrema();
+calculateMean();
+calculateMedian();
+calculateStandardDeviation();
+createMatrixRain();

@@ -1,14 +1,12 @@
-import { currentDisplay, updateDisplay } from './display.js';
-import { addToHistory } from './history.js';
-
-export function setupStatistics() {
-  window.calculateMean = () => {};
-  window.calculateMedian = () => {};
-  window.calculateMode = () => {};
-  window.calculateStdDev = () => {};
-  window.calculateVariance = () => {};
-  window.calculatePermutations = () => {};
-  window.calculateCombinations = () => {};
-  window.bayesianProbability = () => {};
-  window.linearRegression = () => {};
+export function calculateMean() {
+  // Implementation for calculateMean
 }
+
+export function calculateMedian() {
+  // Implementation for calculateMedian
+}
+
+export function calculateStandardDeviation() {
+  // Implementation for calculateStandardDeviation
+}
+
